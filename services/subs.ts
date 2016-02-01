@@ -1,7 +1,8 @@
 import {Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Http, Response} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 import ISubsService from './subs/interface';
 import Sub from '../models/sub';
 
@@ -14,12 +15,15 @@ export default class SubsService implements ISubsService {
   }
 
   get (id: number): Promise<Sub> {
-    return new Promise((resolve: any, reject: any) => {
-      reject(new Error('Not implemented'));
-    });
+    return this._http.get(`/api/subs/${id}.json`)
+      .map((res: Response) => res.json())
+      .toPromise()
+      .then(Sub.fromJson);
   }
 
   list (): Observable<Sub[]> {
-    return Observable.from([]);
+    return this._http.get('/api/subs.json')
+      .map((res: Response) => res.json())
+      .map((json: any) => json.subs.map(Sub.fromJson));
   }
 }
