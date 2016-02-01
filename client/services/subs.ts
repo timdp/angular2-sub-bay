@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import ISubsService from './subs/interface';
-import Sub from '../models/sub';
+import Sub from '../../common/models/sub';
 
 @Injectable()
 export default class SubsService implements ISubsService {
@@ -15,14 +15,14 @@ export default class SubsService implements ISubsService {
   }
 
   get (id: number): Promise<Sub> {
-    return this._http.get(`/api/subs/${id}.json`)
+    return this._http.get(`/client/api/subs/${id}.json`)
       .map((res: Response) => res.json())
       .toPromise()
       .then(Sub.fromJson);
   }
 
   list (): Observable<Sub[]> {
-    return this._http.get('/api/subs.json')
+    return this._http.get('/client/api/subs.json')
       .map((res: Response) => res.json())
       .map((json: any) => json.subs.map(Sub.fromJson));
   }

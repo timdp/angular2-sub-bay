@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import SubPriceCmp from './util/sub-price';
 import SubsService from '../services/subs';
-import Sub from '../models/sub';
+import Sub from '../../common/models/sub';
 
 @Component({
   selector: 'sb-subdetail',

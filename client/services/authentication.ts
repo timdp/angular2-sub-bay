@@ -13,7 +13,7 @@ const buildQueryString = (obj: any) => {
 };
 
 const buildUri = (rsrc: string, obj: any) => {
-  return `/api/${rsrc}.json?` + buildQueryString(obj);
+  return `/client/api/${rsrc}.json?` + buildQueryString(obj);
 };
 
 @Injectable()

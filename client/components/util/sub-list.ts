@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import SubListItemCmp from './sub-list-item';
 import SubsService from '../../services/subs';
-import Sub from '../../models/sub';
+import Sub from '../../../common/models/sub';
 
 @Component({
   selector: 'sb-sublist',
