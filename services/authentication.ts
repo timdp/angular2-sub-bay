@@ -1,12 +1,12 @@
-import {Injectable, Inject} from 'angular2/core';
+import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
-import IAuthenticationService from './interface';
+import IAuthenticationService from './authentication/interface';
 
 @Injectable()
-export default class DefaultAuthenticationService implements IAuthenticationService {
+export default class AuthenticationService implements IAuthenticationService {
   private _http: Http;
 
-  constructor (@Inject(Http) http: Http) {
+  constructor (http: Http) {
     this._http = http;
   }
 

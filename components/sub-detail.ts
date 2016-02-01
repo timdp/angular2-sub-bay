@@ -1,7 +1,7 @@
-import {Component, Inject} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import SubPriceCmp from './util/sub-price';
-import ISubsService from '../services/subs/interface';
+import SubsService from '../services/subs';
 import Sub from '../models/sub';
 
 @Component({
@@ -24,10 +24,9 @@ import Sub from '../models/sub';
 export default class SubDetailCmp {
   private _sub: Sub;
   private _routeParams: RouteParams;
-  private _service: ISubsService;
+  private _service: SubsService;
 
-  constructor (routeParams: RouteParams,
-               @Inject('SubsService') service: ISubsService) {
+  constructor (routeParams: RouteParams, service: SubsService) {
     this._routeParams = routeParams;
     this._service = service;
   }

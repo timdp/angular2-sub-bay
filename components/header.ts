@@ -1,6 +1,6 @@
-import {Inject, Component} from 'angular2/core';
+import {Component} from 'angular2/core';
 import NavigationCmp from './util/navigation';
-import IAuthenticationService from '../services/authentication/interface';
+import AuthenticationService from '../services/authentication';
 
 @Component({
   selector: 'sb-header',
@@ -13,9 +13,9 @@ import IAuthenticationService from '../services/authentication/interface';
     `
 })
 export default class HeaderCmp {
-  private _authService: IAuthenticationService;
+  private _authService: AuthenticationService;
 
-  constructor (@Inject('AuthenticationService') authService: IAuthenticationService) {
+  constructor (authService: AuthenticationService) {
     this._authService = authService;
   }
 

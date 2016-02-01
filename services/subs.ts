@@ -1,15 +1,15 @@
-import {Injectable, Inject} from 'angular2/core';
+import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
-import ISubsService from './interface';
-import Sub from '../../models/sub';
+import ISubsService from './subs/interface';
+import Sub from '../models/sub';
 
 @Injectable()
-export default class DefaultSubsService implements ISubsService {
+export default class SubsService implements ISubsService {
   private _http: Http;
 
-  constructor (@Inject(Http) http: Http) {
+  constructor (http: Http) {
     this._http = http;
   }
 

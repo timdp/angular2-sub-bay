@@ -1,6 +1,6 @@
-import {Component, Inject} from 'angular2/core';
+import {Component} from 'angular2/core';
 import SubListItemCmp from './sub-list-item';
-import ISubsService from '../../services/subs/interface';
+import SubsService from '../../services/subs';
 import Sub from '../../models/sub';
 
 @Component({
@@ -13,10 +13,10 @@ import Sub from '../../models/sub';
     `
 })
 export default class SubListCmp {
-  private _service: ISubsService;
+  private _service: SubsService;
   private _subs: Sub[];
 
-  constructor (@Inject('SubsService') service: ISubsService) {
+  constructor (service: SubsService) {
     this._service = service;
   }
 

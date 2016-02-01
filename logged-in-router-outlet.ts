@@ -1,6 +1,6 @@
-import {Inject, Directive, Attribute, ElementRef, DynamicComponentLoader} from 'angular2/core';
+import {Directive, Attribute, ElementRef, DynamicComponentLoader} from 'angular2/core';
 import {Router, RouterOutlet, ComponentInstruction} from 'angular2/router';
-import IAuthenticationService from './services/authentication/interface';
+import AuthenticationService from './services/authentication';
 
 @Directive({
   selector: 'router-outlet'
@@ -8,11 +8,11 @@ import IAuthenticationService from './services/authentication/interface';
 export default class LoggedInRouterOutlet extends RouterOutlet {
   private _publicRoutes: any;
   private _parentRouter0: Router;
-  private _authService: IAuthenticationService;
+  private _authService: AuthenticationService;
 
   constructor(elementRef: ElementRef, loader: DynamicComponentLoader,
               parentRouter: Router, @Attribute('name') nameAttr: string,
-              @Inject('AuthenticationService') authService: IAuthenticationService) {
+              authService: AuthenticationService) {
     super(elementRef, loader, parentRouter, nameAttr);
     this._parentRouter0 = parentRouter;
     this._authService = authService;

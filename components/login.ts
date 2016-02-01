@@ -1,6 +1,6 @@
-import {Component, Inject} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {Router} from 'angular2/router';
-import IAuthenticationService from '../services/authentication/interface';
+import AuthenticationService from '../services/authentication';
 
 @Component({
   selector: 'sb-login',
@@ -15,10 +15,9 @@ import IAuthenticationService from '../services/authentication/interface';
 })
 export default class LoginCmp {
   private _router: Router;
-  private _authService: IAuthenticationService;
+  private _authService: AuthenticationService;
 
-  constructor (router: Router,
-               @Inject('AuthenticationService') authService: IAuthenticationService) {
+  constructor (router: Router, authService: AuthenticationService) {
     this._router = router;
     this._authService = authService;
   }
