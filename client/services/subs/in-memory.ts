@@ -2,9 +2,9 @@ import {Injectable} from 'angular2/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/fromArray';
 import ISubsService from './interface';
-import Sub from '../../../common/models/sub';
-import Price from '../../../common/models/price';
-import Currency from '../../../common/models/currency';
+import Sub from '../../models/sub';
+import Price from '../../models/price';
+import Currency from '../../models/currency';
 
 @Injectable()
 export default class InMemorySubsService implements ISubsService {

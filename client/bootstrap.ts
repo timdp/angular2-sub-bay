@@ -9,6 +9,7 @@ import SubsService from './services/subs';
 bootstrap(App, [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
+  provide('API_ROOT', {useValue: 'http://localhost:3000/api'}),
   provide(AuthenticationService, {useClass: AuthenticationService}),
   provide(SubsService, {useClass: SubsService})
 ]).catch((err: any) => console.log(err));

@@ -1,6 +1,6 @@
 import {Component, Input} from 'angular2/core';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
-import Sub from '../../../common/models/sub';
+import Sub from '../../models/sub';
 
 @Component({
   selector: 'sb-sublink',

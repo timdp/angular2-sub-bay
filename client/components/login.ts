@@ -25,6 +25,7 @@ export default class LoginCmp {
   login (event: any, username: string, password: string): void {
     event.preventDefault();
     this._authService.login(username, password)
-      .then(() => this._router.parent.navigate(['Home']));
+      .then(() => this._router.parent.navigate(['Home']))
+      .catch((err: Error) => alert('Login failed'));
   }
 }
