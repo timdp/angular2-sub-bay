@@ -25,7 +25,7 @@ export default class LoggedInRouterOutlet extends RouterOutlet {
   activate (instruction: ComponentInstruction): Promise<any> {
     const url: string = this._parentRouter0.lastNavigationAttempt;
     if (!this._publicRoutes[url] && !this._authService.authenticated) {
-      this._parentRouter0.navigateByUrl('/login');
+      this._parentRouter0.navigate(['Login']);
     }
     return super.activate(instruction);
   }
