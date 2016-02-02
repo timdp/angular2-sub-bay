@@ -16,6 +16,10 @@ const outDir = tsConfig.compilerOptions.outDir
 const tsProject = $.typescript.createProject('tsconfig.json')
 const bs = browserSync.create()
 
+const plumb = () => $.plumber({
+  errorHandler: $.notify.onError('Error: <%= error.message %>')
+})
+
 gulp.task('clean', () => del.sync(outDir))
 
 gulp.task('init', () => mkdirp.sync(outDir))
@@ -26,8 +30,16 @@ gulp.task('copy', () => {
     .pipe(gulp.dest(outDir))
 })
 
-gulp.task('js', ['copy'], () => {
+gulp.task('standard', () => {
+  return gulp.src('server/**/*.js')
+    .pipe(plumb())
+    .pipe($.standard())
+    .pipe($.standard.reporter('default', {breakOnError: true}))
+})
+
+gulp.task('js', ['standard', 'copy'], () => {
   return gulp.src('server/**/*.js', {base: './'})
+    .pipe(plumb())
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write())
@@ -35,8 +47,16 @@ gulp.task('js', ['copy'], () => {
     .pipe(bs.stream())
 })
 
-gulp.task('ts', () => {
+gulp.task('tslint', () => {
   return tsProject.src()
+    .pipe(plumb())
+    .pipe($.tslint())
+    .pipe($.tslint.report('prose'))
+})
+
+gulp.task('ts', ['tslint'], () => {
+  return tsProject.src()
+    .pipe(plumb())
     .pipe($.sourcemaps.init())
     .pipe($.typescript(tsProject))
     .pipe($.sourcemaps.write())
