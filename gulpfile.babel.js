@@ -37,7 +37,7 @@ gulp.task('standard', () => {
     .pipe($.standard.reporter('default', {breakOnError: true}))
 })
 
-gulp.task('js', ['standard', 'copy'], () => {
+gulp.task('js', ['standard'], () => {
   return gulp.src('server/**/*.js', {base: './'})
     .pipe(plumb())
     .pipe($.sourcemaps.init())
@@ -64,7 +64,7 @@ gulp.task('ts', ['tslint'], () => {
     .pipe(bs.stream())
 })
 
-gulp.task('server', ['js'], () => {
+gulp.task('server', ['copy', 'js'], () => {
   $.nodemon({
     script: 'built/server/server.js',
     watch: ['server'],
