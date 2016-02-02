@@ -27,6 +27,7 @@ export default gulp => {
   })
 
   gulp.task('client', ['ts'], cb => {
+    bs.init(cb)
     gulp.watch(`${paths.client.src}/**/*.ts`, ['ts'])
   })
 }
