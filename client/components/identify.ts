@@ -14,7 +14,7 @@ export default class IdentifyCmp {
   constructor (params: RouteParams,
                authenticationService: AuthenticationService,
                router: Router) {
-    authenticationService.logIn(params.get('token'))
+    authenticationService.logIn(params.get('id'))
       .then(() => router.navigate(['Home']))
       .catch((err: any) => alert(`Error`));
   }

@@ -17,9 +17,8 @@ app.start = () => app.listen(() => {
 })
 
 app.get('/api/auth/completed', (req, res) => {
-  const token = req.accessToken
-  if (token) {
-    res.redirect(`http://localhost:4000/identify?token=${token.id}`)
+  if (req.user) {
+    res.redirect(`http://localhost:4000/identify?id=${req.user.id}`)
   } else {
     res.redirect('/api/auth/failed')
   }
@@ -57,7 +56,6 @@ boot(app, __dirname, err => {
   })
   for (const name of Object.keys(passportProviderConfig)) {
     const providerConfig = passportProviderConfig[name]
-    providerConfig.session = !!providerConfig.session
     passportConfigurator.configureProvider(name, providerConfig)
   }
 

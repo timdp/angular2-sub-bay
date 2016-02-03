@@ -1,7 +1,7 @@
 interface IAuthenticationService {
   authenticated: boolean;
   userInfo: any;
-  logIn (token: string): Promise<any>;
+  logIn (id: string): Promise<any>;
   logOut (): Promise<any>;
 }
 

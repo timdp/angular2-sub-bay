@@ -3,6 +3,7 @@
     "provider": "google",
     "module": "passport-google-oauth",
     "strategy": "OAuth2Strategy",
+    "session": true,
     "clientID": "...",
     "clientSecret": "...",
     "callbackURL": "/api/auth/google/callback",
