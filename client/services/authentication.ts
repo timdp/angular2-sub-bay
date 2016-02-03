@@ -14,13 +14,6 @@ export default class AuthenticationService implements IAuthenticationService {
   private _userInfo: any;
 
   constructor (http: Http, @Inject('API_ROOT') apiRoot: string) {
-    // Monkey-patch Http to support withCredentials - https://github.com/angular/angular/issues/4231
-    const _build = (<any> http)._backend._browserXHR.build;
-    (<any> http)._backend._browserXHR.build = () => {
-      let _xhr =  _build();
-      _xhr.withCredentials = true;
-      return _xhr;
-    };
     this._http = http;
     this._apiRoot = apiRoot;
     this._userId = window.localStorage.getItem(LOCAL_STORAGE_KEY);
