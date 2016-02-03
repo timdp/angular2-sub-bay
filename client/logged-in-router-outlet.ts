@@ -8,23 +8,27 @@ import AuthenticationService from './services/authentication';
 export default class LoggedInRouterOutlet extends RouterOutlet {
   private _publicRoutes: any;
   private _parentRouter0: Router;
-  private _authService: AuthenticationService;
+  private _authenticationService: AuthenticationService;
 
   constructor(elementRef: ElementRef, loader: DynamicComponentLoader,
               parentRouter: Router, @Attribute('name') nameAttr: string,
-              authService: AuthenticationService) {
+              authenticationService: AuthenticationService) {
     super(elementRef, loader, parentRouter, nameAttr);
     this._parentRouter0 = parentRouter;
-    this._authService = authService;
+    this._authenticationService = authenticationService;
     this._publicRoutes = {
       '/login': true,
-      '/signup': true
+      '/identify': true
     };
   }
 
   activate (instruction: ComponentInstruction): Promise<any> {
-    const url: string = this._parentRouter0.lastNavigationAttempt;
-    if (!this._publicRoutes[url] && !this._authService.authenticated) {
+    let url: string = this._parentRouter0.lastNavigationAttempt;
+    const pos: number = url.indexOf('?');
+    if (pos >= 0) {
+      url = url.substr(0, pos);
+    }
+    if (!this._publicRoutes[url] && !this._authenticationService.authenticated) {
       this._parentRouter0.navigate(['Login']);
     }
     return super.activate(instruction);

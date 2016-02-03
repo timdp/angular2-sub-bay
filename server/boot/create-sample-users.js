@@ -12,7 +12,10 @@ module.exports = function (app) {
       principalId: user.id
     }, cb)
   ], err => {
-    if (err) throw err
-    console.info('Sample user created')
+    if (err) {
+      console.warn('Failed to create sample user: %s', err)
+    } else {
+      console.info('Sample user created')
+    }
   })
 }

@@ -4,5 +4,7 @@ npm-debug.log
 node_modules/
 coverage/
 .strong-pm
+/server/passport-providers.json
+/db.json
 /.tmp/
 /built/

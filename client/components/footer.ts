@@ -8,23 +8,19 @@ import AuthenticationService from '../services/authentication';
   template: `
       <hr>
       <p>
-        <span *ngIf="authenticated">Signed in as {{username}}</span>
+        <span *ngIf="authenticated">Signed in</span>
         <span *ngIf="!authenticated">Not signed in</span>
       </p>
     `
 })
 export default class FooterCmp {
-  private _authService: AuthenticationService;
+  private _authenticationService: AuthenticationService;
 
-  constructor (authService: AuthenticationService) {
-    this._authService = authService;
+  constructor (authenticationService: AuthenticationService) {
+    this._authenticationService = authenticationService;
   }
 
   get authenticated (): boolean {
-    return this._authService.authenticated;
-  }
-
-  get username (): string {
-    return this._authService.username;
+    return this._authenticationService.authenticated;
   }
 }

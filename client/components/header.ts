@@ -13,13 +13,13 @@ import AuthenticationService from '../services/authentication';
     `
 })
 export default class HeaderCmp {
-  private _authService: AuthenticationService;
+  private _authenticationService: AuthenticationService;
 
-  constructor (authService: AuthenticationService) {
-    this._authService = authService;
+  constructor (authenticationService: AuthenticationService) {
+    this._authenticationService = authenticationService;
   }
 
   get authenticated (): boolean {
-    return this._authService.authenticated;
+    return this._authenticationService.authenticated;
   }
 }

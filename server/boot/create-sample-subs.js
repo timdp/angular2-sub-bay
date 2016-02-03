@@ -6,7 +6,10 @@ module.exports = function (app) {
     subs.push({id, name: `Sub ${id}`, price})
   }
   app.models.Sub.create(subs, err => {
-    if (err) throw err
-    console.info('Sample subs created')
+    if (err) {
+      console.warn('Failed to create sample subs: %s', err)
+    } else {
+      console.info('Sample subs created')
+    }
   })
 }

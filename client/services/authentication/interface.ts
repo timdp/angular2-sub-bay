@@ -1,8 +1,8 @@
 interface IAuthenticationService {
   authenticated: boolean;
-  username: string;
-  login (username: string, password: string): Promise<any>;
-  logout (): Promise<any>;
+  userInfo: any;
+  logIn (token: string): Promise<any>;
+  logOut (): Promise<any>;
 }
 
 export default IAuthenticationService;
