@@ -8,11 +8,10 @@ import MenuCmp from './components/menu';
 import HeaderCmp from './components/header';
 import FooterCmp from './components/footer';
 import SubDetailCmp from './components/sub-detail';
-import LoggedInRouterOutlet from './logged-in-router-outlet';
 
 @Component({
   selector: 'sb-app',
-  directives: [ROUTER_DIRECTIVES, LoggedInRouterOutlet, HeaderCmp, FooterCmp],
+  directives: [ROUTER_DIRECTIVES, HeaderCmp, FooterCmp],
   template: `
     <sb-header></sb-header>
     <router-outlet></router-outlet>

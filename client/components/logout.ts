@@ -1,7 +1,9 @@
 import {Component} from 'angular2/core';
 import {Router, ROUTER_DIRECTIVES} from 'angular2/router';
 import AuthenticationService from '../services/authentication';
+import Auth from './util/auth';
 
+@Auth
 @Component({
   selector: 'sb-logout',
   directives: [ROUTER_DIRECTIVES],

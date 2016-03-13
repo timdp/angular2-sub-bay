@@ -5,6 +5,7 @@ import {provide} from 'angular2/core';
 import {HTTP_PROVIDERS, BrowserXhr} from 'angular2/http';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import App from './app';
+import Context from './context';
 import BrowserXhrWithCredentials from './services/browser-xhr-with-credentials';
 import AuthenticationService from './services/authentication';
 import SubsService from './services/subs';
@@ -16,4 +17,5 @@ bootstrap(App, [
   provide(AuthenticationService, {useClass: AuthenticationService}),
   provide(SubsService, {useClass: SubsService}),
   provide(BrowserXhr, {useClass: BrowserXhrWithCredentials})
-]).catch((err: any) => console.log(err));
+]).then((app: any) => { Context.injector = app.injector; })
+  .catch((err: any) => console.log(err));

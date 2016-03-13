@@ -3,7 +3,9 @@ import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 import SubPriceCmp from './util/sub-price';
 import SubsService from '../services/subs';
 import Sub from '../models/sub';
+import Auth from './util/auth';
 
+@Auth
 @Component({
   selector: 'sb-subdetail',
   directives: [SubPriceCmp, ROUTER_DIRECTIVES],
