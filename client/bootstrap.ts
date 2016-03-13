@@ -1,9 +1,11 @@
+///<reference path="../node_modules/angular2/typings/browser.d.ts"/>
+
 import {bootstrap} from 'angular2/platform/browser';
 import {provide} from 'angular2/core';
 import {HTTP_PROVIDERS, BrowserXhr} from 'angular2/http';
-import BrowserXhrWithCredentials from './services/browser-xhr-with-credentials';
 import {ROUTER_PROVIDERS} from 'angular2/router';
 import App from './app';
+import BrowserXhrWithCredentials from './services/browser-xhr-with-credentials';
 import AuthenticationService from './services/authentication';
 import SubsService from './services/subs';
 
