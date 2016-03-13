@@ -17,8 +17,9 @@ app.start = () => app.listen(() => {
 })
 
 app.get('/api/auth/completed', (req, res) => {
-  if (req.user) {
-    res.redirect(`http://localhost:4000/identify?id=${req.user.id}`)
+  // TODO Find better way to obtain current user ID
+  if (req.signedCookies && req.signedCookies.userId) {
+    res.redirect(`http://localhost:4000/identify?id=${req.signedCookies.userId}`)
   } else {
     res.redirect('/api/auth/failed')
   }
@@ -42,7 +43,7 @@ boot(app, __dirname, err => {
   }))
   app.middleware('session:before', loopback.cookieParser(app.get('cookieSecret')))
   app.middleware('session', loopback.session({
-    secret: 'keyboard dog',
+    secret: app.get('sessionSecret'),
     saveUninitialized: true,
     resave: true
   }))

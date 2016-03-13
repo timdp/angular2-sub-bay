@@ -24,5 +24,6 @@
     }
   },
   "legacyExplorer": false,
-  "cookieSecret": "bec3e5ac-0bbd-4889-8c28-0f1faa5e75ab"
+  "cookieSecret": "bec3e5ac-0bbd-4889-8c28-0f1faa5e75ab",
+  "sessionSecret": "bec3e5ac-0bbd-4889-8c28-0f1faa5e75ab"
 }
